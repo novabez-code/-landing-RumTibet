@@ -1,0 +1,60 @@
+.pinterest__slider {
+  margin: 32px 0;
+}
+
+.pinterest .splide__slide {
+  width: 100%;
+  aspect-ratio: 1.12/1;
+
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.pinterest__slider--img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pinterest__btn {
+  display: flex;
+  justify-content: center;
+}
+.pinterest__slider--img {
+  transition: all 0.2s linear;
+}
+
+.pinterest__slider--img:hover {
+  transform: scale(1.1);
+}
+
+@media (min-width: 768px) {
+  .pinterest .container {
+    padding: 80px 16px 100px 16px;
+  }
+
+  .pinterest__header {
+    text-align: center;
+  }
+
+  .pinterest .splide__list {
+    width: 100% !important;
+    height: 100% !important;
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    grid-template-rows: repeat(2, 250px) !important;
+    gap: 20px;
+  }
+  .pinterest .splide__slide {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: none !important;
+  }
+
+  .pinterest .img1 {
+    grid-column: span 2;
+  }
+  .pinterest .img5 {
+    grid-column: span 2;
+  }
+}

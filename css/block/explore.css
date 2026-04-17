@@ -1,0 +1,158 @@
+.explore__text {
+  font-size: var(--font-size);
+  line-height: 150%;
+
+  margin-bottom: 24px;
+}
+
+.explore__btn {
+  display: flex;
+  justify-content: center;
+
+  margin-bottom: 40px;
+}
+
+#video-gallery-1 {
+  width: 100%;
+  height: 450px;
+  position: relative;
+  overflow: hidden;
+}
+
+#video-gallery-2 {
+  width: 100%;
+  height: 450px;
+  position: relative;
+  overflow: hidden;
+}
+
+.explore__video {
+  width: 100%;
+  height: 100%;
+
+  position: relative;
+}
+
+.explore__video--block {
+  display: none;
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+}
+
+.explore__video--block a {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.explore__video--block a:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.explore__video--block.active {
+  display: block;
+}
+.explore__video--block .video-gallery-2 {
+  width: 100%;
+  height: 100%;
+}
+.explore__video--block > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.explore__video--block img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.explore__video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.explore__video--btn {
+  width: 50px;
+  aspect-ratio: 1/1;
+
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  z-index: 10;
+}
+
+@media (min-width: 768px) {
+  .explore .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+
+    padding: 100px 16px;
+  }
+
+  .explore__info {
+    width: 100%;
+    max-width: 580px;
+    order: 10;
+  }
+
+  .explore__title {
+    margin-bottom: 40px;
+  }
+
+  .explore__text {
+    font-size: var(--font-size-h3);
+
+    margin: bottom 40px;
+  }
+
+  .explore__btn {
+    display: block;
+
+    margin-bottom: 0;
+  }
+
+  .explore__video {
+    min-width: 350px;
+
+    max-width: 480px;
+    height: 526px;
+
+    position: relative;
+  }
+
+  .explore__video--block {
+    width: 350px;
+    height: 400px;
+    display: block;
+
+    cursor: pointer;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    z-index: 1;
+
+    transition: all 0.5s ease-in-out;
+    transform: translate(0, 0);
+  }
+
+  .explore__video--block.active {
+    z-index: 2;
+    top: 100%;
+    left: 100%;
+    transform: translate(-100%, -100%);
+  }
+}

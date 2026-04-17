@@ -1,0 +1,175 @@
+.intro {
+  background-image: url(../../img/intro__bg.webp);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.intro__title {
+  color: var(--color-text-white-small);
+
+  font-size: clamp(4px, 7vw, var(--font-size-h1));
+  text-transform: uppercase;
+
+  font-weight: 700;
+  line-height: 150%;
+
+  margin-top: 300px;
+  margin-right: 14px;
+}
+
+.intro__btn {
+  margin-top: 32px;
+}
+
+.intro__program--loc,
+.intro__program--data,
+.intro__program--part {
+  display: none;
+  position: relative;
+  overflow: visible !important;
+}
+
+@media (min-width: 768px) {
+  .intro .container {
+    padding: 1px 16px 82px 16px;
+  }
+
+  .intro__title {
+    width: 100%;
+    max-width: 1080px;
+
+    font-size: var(--font-size-h1-desktop);
+    margin-bottom: 41px;
+    margin-top: clamp(300px, 39vw, 500px);
+  }
+  .intro__program {
+    width: 100%;
+
+    padding: 40px 42px;
+    background-color: rgb(from var(--color-bg-white) r g b / 0.2);
+    backdrop-filter: blur(6px);
+    border-radius: 10px;
+  }
+
+  .intro__program {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .intro__btn {
+    margin-top: 0;
+  }
+
+  .intro__program--loc,
+  .intro__program--data,
+  .intro__program--part {
+    display: block;
+    flex: 1;
+
+    color: var(--color-text-white-small);
+  }
+  .intro__program--input {
+    font-weight: 600;
+    line-height: 150%;
+    width: 100%;
+
+    color: var(--color-text-white-small);
+
+    background: none;
+    padding: 14px 38px 14px 16px;
+    border: 1px solid var(--color-text-white-small);
+    border-radius: 16px;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    background-image: url("../../img/icon/ep_arrow-down.svg");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+  }
+  .intro__program--input::-webkit-calendar-picker-indicator {
+    display: none !important;
+  }
+  .intro__program--input::-ms-expand {
+    display: none;
+  }
+
+  .intro__program--input::placeholder {
+    color: var(--color-text-white-small);
+  }
+
+  .intro__program--input:focus,
+  .intro__program--date:focus {
+    outline: none;
+  }
+
+  .intro__program--input option {
+    background-color: var(--color-bg-white);
+    color: var(--color-bg-green);
+    padding: 12px 16px;
+    font-weight: 600;
+    line-height: 150%;
+  }
+
+  .intro__program--input option:hover,
+  .intro__program--input option:checked {
+    background-color: var(--color-bg-green);
+    color: var(--color-bg-white);
+  }
+
+  .intro__program--input option[disabled] {
+    color: #999;
+    font-style: italic;
+  }
+
+  .intro__program--date {
+    font-weight: 600;
+    line-height: 150%;
+    min-height: 40px;
+    width: 100%;
+
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    pointer-events: auto;
+
+    color: var(--color-text-white-small);
+    background-image: url("../../img/icon/formkit_date.svg");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 20px;
+
+    background-color: transparent;
+    padding: 14px 13px 14px 16px;
+    border: 1px solid var(--color-text-white-small);
+    border-radius: 16px;
+  }
+  .intro__program--date::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+  }
+
+  @-moz-document url-prefix() {
+    .intro__program--date {
+      padding-right: 15px;
+      background-image: none !important;
+    }
+
+    input[type="date"]::-moz-calendar-picker-indicator {
+      display: block !important;
+    }
+  }
+
+  .intro__program--label {
+    display: block;
+
+    margin-top: 8px;
+    font-size: var(--font-size-small);
+    line-height: 150%;
+  }
+}

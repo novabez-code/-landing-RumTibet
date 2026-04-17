@@ -1,0 +1,649 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/element/lightgallery-bundle.min.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="icon" type="image/svg+xml" href="img/icon/logo.svg" />
+    <title>РуиТибет</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="header__block">
+          <a class="header__logo" href="index.html#intro"
+            ><img src="img/icon/logo.svg" alt="РумТибет"
+          /></a>
+
+          <div
+            class="header__burger"
+            aria-label="Открыть главное меню"
+            aria-expanded="false"
+            aria-controls="header-nav"
+          >
+            <span class="span1"></span>
+            <span class="span2"></span>
+            <span class="span3"></span>
+          </div>
+        </div>
+        <div class="header__nav--block">
+          <ul
+            id="header-nav"
+            class="header__nav"
+            role="navigation"
+            aria-label="Главное меню"
+          >
+            <li class="header__item">
+              <a class="header__item--link" href="index.html#intro">Главная</a>
+            </li>
+            <li class="header__item">
+              <a class="header__item--link" href="#explore">Про гида</a>
+            </li>
+            <li class="header__item">
+              <a class="header__item--link" href="#program">Программа тура</a>
+            </li>
+            <li class="header__item">
+              <a class="header__item--link" href="#travel">Стоимость</a>
+            </li>
+            <li class="header__item">
+              <a class="header__item--link" href="#journey">Блог</a>
+            </li>
+            <li class="header__item">
+              <a class="header__item--link" href="#footer">Контакты</a>
+            </li>
+          </ul>
+          <button type="button" class="header__nav--btn btn small">
+            Консультация
+          </button>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section id="intro" class="intro">
+        <div class="wrapper intro__wrapper">
+          <div class="container">
+            <!--  -->
+            <h1 class="intro__title">
+              Насладись прогулкой в горы с командой единомышленников
+            </h1>
+            <!--  -->
+            <form class="intro__program" id="intro-search-form" novalidate>
+              <div class="intro__program--loc">
+                <select
+                  class="intro__program--input"
+                  id="travel-choice"
+                  required
+                >
+                  <option value="" disabled selected>Локация для тура</option>
+                  <option value="Италия">Италия</option>
+                  <option value="Индия">Индия</option>
+                  <option value="Россия">Россия</option>
+                  <option value="США">США</option>
+                </select>
+                <label class="intro__program--label" for="travel-choice"
+                  >выберите из списка</label
+                >
+              </div>
+              <!--  -->
+              <div class="intro__program--data">
+                <input
+                  class="intro__program--date"
+                  id="travel-data"
+                  type="date"
+                  placeholder="Локация для тура"
+                />
+
+                <label class="intro__program--label" for="travel-data"
+                  >укажите диапазон</label
+                >
+              </div>
+              <!--  -->
+              <div class="intro__program--part">
+                <select
+                  class="intro__program--input"
+                  id="travel-participants"
+                  required
+                >
+                  <option value="" disabled selected>Участники</option>
+                  <option value="1">1 человек</option>
+                  <option value="2">2 человека</option>
+                  <option value="3">3 человека</option>
+                  <option value="4">4 человека</option>
+                </select>
+                <label class="intro__program--label" for="travel-participants"
+                  >минимум 4 человека</label
+                >
+              </div>
+              <div class="intro__program--btn">
+                <button type="submit" class="intro__btn btn btn-white">
+                  Найти программу
+                </button>
+              </div>
+            </form>
+            <!--  -->
+          </div>
+        </div>
+      </section>
+      <!--  -->
+      <section id="explore" class="explore" aria-labelledby="explore-heading">
+        <div class="wrapper wrapper-white">
+          <div class="container">
+            <div class="explore__info">
+              <p class="explore__subtitle subtitle">о нашем походе</p>
+              <h2 class="explore__title title">
+                Исследуйте все горные массивы мира вместе с нами
+              </h2>
+              <p class="explore__text">
+                Его корни уходят в один фрагмент классической латыни 45 года
+                н.э., то есть более двух тысячелетий назад. Ричард МакКлинток,
+                профессор латыни из колледжа Hampden-Sydney, штат Вирджиния,
+                взял одно из самых странных слов в Lorem Ipsum, "consectetur"и
+                занялся его поисками в классической латинской литературе.
+              </p>
+              <div class="explore__btn">
+                <button type="button" class="btn">Программа тура</button>
+              </div>
+            </div>
+
+            <div class="explore__video">
+              <div
+                class="explore__video--block"
+                role="button"
+                tabindex="0"
+                aria-label="Воспроизвести видео о путешествиях"
+              >
+                <div id="video-gallery-2">
+                  <img loading="lazy" src="img/video__bg_2.webp" alt="video2" />
+                  <a
+                    data-poster="img/video__bg_2.webp"
+                    href="https://youtu.be/0kUkAxZlW44?si=Xf0-x70RrNWd2TX8"
+                  >
+                    <img src="img/icon/video.svg" alt="play_video" />
+                  </a>
+                </div>
+              </div>
+              <!--  -->
+              <div
+                class="explore__video--block active"
+                role="button"
+                tabindex="0"
+                aria-label="Воспроизвести видео о путешествиях"
+              >
+                <div id="video-gallery-1">
+                  <img loading="lazy" src="img/video__bg_1.webp" alt="video1" />
+                  <a
+                    data-poster="img/video__bg_1.webp"
+                    href="https://youtu.be/9Zq79uu_o5E?si=wZEPYsVqwGbVRCTx8"
+                  >
+                    <img src="img/icon/video.svg" alt="play_video" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--  -->
+      <section id="program" class="program" aria-labelledby="program-heading">
+        <div class="wrapper wrapper-grey">
+          <div class="container">
+            <div class="program__info">
+              <p class="subtitle">наше предложение</p>
+              <h2 class="title">Лучшие программы для тебя</h2>
+              <p class="program__text">
+                Его корни уходят в один фрагмент классической латыни 45 года
+                н.э., то есть более двух тысячелетий назад. Ричард МакКлинток,
+                профессор латыни из колледжа.
+              </p>
+              <ul class="program__list">
+                <!--  -->
+                <li class="program__item">
+                  <img
+                    loading="lazy"
+                    class="program__item--img"
+                    src="img/icon/program_1.svg"
+                    alt="program"
+                  />
+                  <div class="program__item--content">
+                    <h3 class="program__item--title">Опытный гид</h3>
+                    <p class="program__item--text">
+                      Для современного мира базовый вектор развития предполагает
+                      независимые способы реализации соответствующих условий
+                      активизации.
+                    </p>
+                  </div>
+                </li>
+                <!--  -->
+                <li class="program__item">
+                  <img
+                    loading="lazy"
+                    class="program__item--img"
+                    src="img/icon/program_2.svg"
+                    alt="program"
+                  />
+                  <div class="program__item--content">
+                    <h3 class="program__item--title">Безопасный поход</h3>
+                    <p class="program__item--text">
+                      Для современного мира базовый вектор развития предполагает
+                      независимые способы реализации соответствующих условий
+                      активизации.
+                    </p>
+                  </div>
+                </li>
+                <!--  -->
+                <li class="program__item">
+                  <img
+                    loading="lazy"
+                    class="program__item--img"
+                    src="img/icon/program_3.svg"
+                    alt="program"
+                  />
+                  <div class="program__item--content">
+                    <h3 class="program__item--title">Лояльные цены</h3>
+                    <p class="program__item--text">
+                      Для современного мира базовый вектор развития предполагает
+                      независимые способы реализации соответствующих условий
+                      активизации.
+                    </p>
+                  </div>
+                </li>
+                <!--  -->
+              </ul>
+              <div class="program__btn">
+                <button type="button" class="btn">Стоимость программ</button>
+              </div>
+            </div>
+
+            <div class="program__imgs--wrapper">
+              <div class="program__imgs">
+                <img
+                  loading="lazy"
+                  class="program__img img-1"
+                  src="img/program_photo_1.webp"
+                  alt="program_photo_1"
+                />
+                <img
+                  loading="lazy"
+                  class="program__img img-2"
+                  src="img/program_photo_2.webp"
+                  alt="program_photo_2"
+                />
+                <img
+                  loading="lazy"
+                  class="program__img img-3"
+                  src="img/program_photo_3.webp"
+                  alt="program_photo_3"
+                />
+                <img
+                  loading="lazy"
+                  class="program__img img-4"
+                  src="img/program_photo_4.webp"
+                  alt="program_photo_4"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--  -->
+      <section id="travel" class="travel" aria-labelledby="travel-heading">
+        <div class="wrapper wrapper-white">
+          <div class="container">
+            <div class="travel__header">
+              <p class="subtitle">по версии отдыхающих</p>
+              <h2 class="title">Популярные направления</h2>
+            </div>
+
+            <!--  -->
+            <section
+              id="travel-slider"
+              class="travel__slider splide"
+              aria-label="опулярные туристические направления"
+              role="region"
+            >
+              <div class="splide__track">
+                <ul class="splide__list"></ul>
+              </div>
+            </section>
+            <!--  -->
+            <div class="travel__btn">
+              <button type="button" class="btn btn-small">
+                Рейтинг направлений
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--  -->
+      <section id="journey" class="journey" aria-labelledby="journey-heading">
+        <div class="wrapper wrapper-grey">
+          <div class="container">
+            <div class="journey__header">
+              <p class="subtitle">делимся впечатлениями</p>
+              <h2 class="title">Блог о путешествиях</h2>
+            </div>
+
+            <!--  -->
+            <section
+              id="pinterest-slider"
+              class="journey__slider splide"
+              aria-label="Фотоотчёт с наших путешествий"
+              role="region"
+            >
+              <div class="splide__track">
+                <ul class="splide__list"></ul>
+              </div>
+            </section>
+            <!--  -->
+            <div class="journey__btn">
+              <button type="button" class="btn">Другие материалы</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--  -->
+      <section
+        id="pinterest"
+        class="pinterest"
+        aria-labelledby="pinterest-heading"
+      >
+        <div class="wrapper wrapper-white">
+          <div class="container">
+            <div class="pinterest__header">
+              <p class="subtitle">фото-отчет</p>
+              <h2 class="title">Делимся впечатлениями</h2>
+            </div>
+
+            <!--  -->
+            <section
+              class="pinterest__slider splide"
+              aria-label="Splide Basic HTML Example"
+            >
+              <div class="splide__track">
+                <ul id="lightgallery-img" class="splide__list">
+                  <li class="splide__slide img1">
+                    <a
+                      loading="lazy"
+                      href="img/photo_1.webp"
+                      data-sub-html="<h4>Заголовок фото 1</h4><p>Описание под картинкой</p>"
+                    >
+                      <img
+                        class="pinterest__slider--img"
+                        src="img/photo_1.webp"
+                        alt="photo_1"
+                    /></a>
+                  </li>
+                  <li class="splide__slide img2">
+                    <a
+                      loading="lazy"
+                      href="img/photo_2.webp"
+                      data-sub-html="<h4>Красивый пейзаж</h4>"
+                    >
+                      <img
+                        loading="lazy"
+                        class="pinterest__slider--img"
+                        src="img/photo_2.webp"
+                        alt="photo_2"
+                    /></a>
+                  </li>
+                  <li class="splide__slide img3">
+                    <a
+                      href="img/photo_3.webp"
+                      data-sub-html="<h4>Красивый пейзаж</h4>"
+                    >
+                      <img
+                        loading="lazy"
+                        class="pinterest__slider--img"
+                        src="img/photo_3.webp"
+                        alt="photo_3"
+                    /></a>
+                  </li>
+                  <li class="splide__slide img4">
+                    <a
+                      href="img/photo_4.webp"
+                      data-sub-html="<h4>Красивый пейзаж</h4>"
+                    >
+                      <img
+                        loading="lazy"
+                        class="pinterest__slider--img"
+                        src="img/photo_4.webp"
+                        alt="photo_4"
+                    /></a>
+                  </li>
+                  <li class="splide__slide img5">
+                    <a
+                      href="img/photo_5.webp"
+                      data-sub-html="<h4>Красивый пейзаж</h4>"
+                    >
+                      <img
+                        loading="lazy"
+                        class="pinterest__slider--img"
+                        src="img/photo_5.webp"
+                        alt="photo_5"
+                    /></a>
+                  </li>
+                  <li class="splide__slide img6">
+                    <a
+                      href="img/photo_6.webp"
+                      data-sub-html="<h4>Красивый пейзаж</h4>"
+                    >
+                      <img
+                        loading="lazy"
+                        class="pinterest__slider--img"
+                        src="img/photo_6.webp"
+                        alt="photo_6"
+                    /></a>
+                  </li>
+                </ul>
+              </div>
+            </section>
+            <!--  -->
+            <div class="pinterest__btn">
+              <button type="button" class="btn">Наш pinterest</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--  -->
+      <section class="form">
+        <div class="wrapper wrapper-white">
+          <div class="container">
+            <form class="form__content" id="newsletter-form" novalidate>
+              <div class="form__header">
+                <p class="subtitle mobile">фото-отчет</p>
+                <h2 class="title mobile">Делимся впечатлениями</h2>
+                <p class="subtitle desktop">актуально</p>
+                <h2 class="title desktop">
+                  Получайте полезные рассылки о путешествиях
+                </h2>
+              </div>
+              <!--  -->
+              <div class="form__main">
+                <label class="form__label" for="form__email"
+                  >Введите e-mail адрес</label
+                >
+                <div class="form__input">
+                  <input
+                    id="form__email"
+                    class="form__email"
+                    type="email"
+                    placeholder="name@domain.com"
+                  />
+                  <button type="submit" class="btn">
+                    Подписаться на новости
+                  </button>
+                </div>
+
+                <p class="form__text">
+                  подписываясь на новости, вы автоматически соглашаетесь с
+                  <a class="form__link" href="#"
+                    >условиями обработки персональных данных</a
+                  >
+                  и
+                  <a class="form__link" href="#">
+                    правилами рекламных рассылок</a
+                  >
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer id="footer" class="footer">
+      <div class="wrapper wrapper-green">
+        <div class="container">
+          <!--  -->
+          <div class="footer__content">
+            <h2 class="footer__title">Компания «РумТибет»</h2>
+            <p class="footer__text">
+              Его корни уходят в один фрагмент классической латыни 45 года н.э.,
+              то есть более двух тысячелетий назад. Ричард МакКлинток, профессор
+              латыни из колледжа Hampden-Sydney.
+            </p>
+            <div class="footer__contact">
+              <a class="footer__link" href="#">info@domain.com</a>
+              <a class="footer__link" href="#">+7 (123) 456-78-90</a>
+            </div>
+            <ul class="footer__links">
+              <a class="footer__icon" href="#"
+                ><svg
+                  width="32"
+                  height="32"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M16 2.66663C8.63996 2.66663 2.66663 8.63996 2.66663 16C2.66663 23.36 8.63996 29.3333 16 29.3333C23.36 29.3333 29.3333 23.36 29.3333 16C29.3333 8.63996 23.36 2.66663 16 2.66663ZM22.1866 11.7333C21.9866 13.84 21.12 18.96 20.68 21.32C20.4933 22.32 20.12 22.6533 19.7733 22.6933C19 22.76 18.4133 22.1866 17.6666 21.6933C16.4933 20.92 15.8266 20.44 14.6933 19.6933C13.3733 18.8266 14.2266 18.3466 14.9866 17.5733C15.1866 17.3733 18.6 14.2666 18.6666 13.9866C18.6759 13.9442 18.6747 13.9002 18.663 13.8584C18.6514 13.8165 18.6298 13.7782 18.6 13.7466C18.52 13.68 18.4133 13.7066 18.32 13.72C18.2 13.7466 16.3333 14.9866 12.6933 17.44C12.16 17.8 11.68 17.9866 11.2533 17.9733C10.7733 17.96 9.86663 17.7066 9.18663 17.48C8.34663 17.2133 7.69329 17.0666 7.74663 16.6C7.77329 16.36 8.10663 16.12 8.73329 15.8666C12.6266 14.1733 15.2133 13.0533 16.5066 12.52C20.2133 10.9733 20.9733 10.7066 21.48 10.7066C21.5866 10.7066 21.84 10.7333 22 10.8666C22.1333 10.9733 22.1733 11.12 22.1866 11.2266C22.1733 11.3066 22.2 11.5466 22.1866 11.7333Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </a>
+              <!--  -->
+              <a class="footer__icon" href="#"
+                ><svg
+                  width="27"
+                  height="27"
+                  viewBox="0 0 27 27"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M13.36 0C5.98138 0 0 5.98138 0 13.36C0 20.7386 5.98138 26.72 13.36 26.72C20.7386 26.72 26.72 20.7386 26.72 13.36C26.72 5.98138 20.7386 0 13.36 0ZM18.498 15.0731C18.498 15.0731 19.6796 16.2394 19.9704 16.7807C19.9788 16.7918 19.9829 16.803 19.9857 16.8085C20.104 17.0076 20.1318 17.162 20.0734 17.2775C19.976 17.4696 19.642 17.5642 19.5279 17.5726H17.4404C17.2956 17.5726 16.9922 17.535 16.6248 17.2817C16.3423 17.0841 16.064 16.7598 15.7926 16.4439C15.3877 15.9735 15.037 15.5672 14.6835 15.5672C14.6386 15.5671 14.594 15.5742 14.5513 15.5881C14.2841 15.6743 13.9417 16.0557 13.9417 17.0716C13.9417 17.3889 13.6912 17.5712 13.5145 17.5712H12.5584C12.2327 17.5712 10.5363 17.4571 9.03331 15.872C7.19352 13.9306 5.53744 10.0367 5.52352 10.0005C5.41915 9.74862 5.63486 9.61363 5.87005 9.61363H7.97842C8.25954 9.61363 8.35139 9.78481 8.41541 9.9365C8.49056 10.1132 8.76611 10.816 9.2184 11.6065C9.95181 12.8952 10.4013 13.4184 10.7618 13.4184C10.8293 13.4177 10.8957 13.4005 10.9552 13.3683C11.4256 13.1067 11.3379 11.4298 11.317 11.0818C11.317 11.0164 11.3156 10.3317 11.0749 10.0033C10.9023 9.76532 10.6087 9.67487 10.4305 9.64147C10.5026 9.54198 10.5976 9.46131 10.7075 9.40627C11.0303 9.24484 11.6121 9.22118 12.1896 9.22118H12.5111C13.1373 9.22953 13.2988 9.26989 13.5256 9.32695C13.9849 9.43689 13.9946 9.73332 13.9542 10.7478C13.9417 11.0359 13.9292 11.3616 13.9292 11.7457C13.9292 11.8292 13.925 11.9182 13.925 12.0129C13.9111 12.5292 13.8944 13.1151 14.259 13.3558C14.3066 13.3856 14.3615 13.4016 14.4177 13.4017C14.5443 13.4017 14.9256 13.4017 15.9582 11.6302C16.2767 11.0599 16.5534 10.4674 16.7863 9.85717C16.8072 9.82099 16.8684 9.70966 16.9408 9.66652C16.9942 9.63929 17.0534 9.62544 17.1133 9.62616H19.5919C19.8619 9.62616 20.047 9.66652 20.0817 9.77089C20.143 9.9365 20.0706 10.4417 18.9392 11.9739L18.434 12.6405C17.4084 13.9849 17.4084 14.053 18.498 15.0731Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </a>
+              <a class="footer__icon" href="#"
+                ><svg
+                  width="27"
+                  height="27"
+                  viewBox="0 0 27 27"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M9.38667 26.0533C10.6667 26.44 11.96 26.6667 13.3333 26.6667C16.8696 26.6667 20.2609 25.2619 22.7614 22.7614C25.2619 20.2609 26.6667 16.8696 26.6667 13.3333C26.6667 11.5824 26.3218 9.84856 25.6517 8.23089C24.9817 6.61321 23.9995 5.14336 22.7614 3.90524C21.5233 2.66713 20.0535 1.685 18.4358 1.01494C16.8181 0.344877 15.0843 0 13.3333 0C11.5824 0 9.84856 0.344877 8.23089 1.01494C6.61321 1.685 5.14336 2.66713 3.90524 3.90524C1.40476 6.40573 0 9.79712 0 13.3333C0 19 3.56 23.8667 8.58667 25.7867C8.46667 24.7467 8.34667 23.0267 8.58667 21.84L10.12 15.2533C10.12 15.2533 9.73334 14.48 9.73334 13.2533C9.73334 11.4133 10.88 10.04 12.1867 10.04C13.3333 10.04 13.8667 10.88 13.8667 11.96C13.8667 13.1067 13.1067 14.7467 12.72 16.32C12.4933 17.6267 13.4133 18.7733 14.7467 18.7733C17.12 18.7733 18.96 16.24 18.96 12.6667C18.96 9.46667 16.6667 7.28 13.3733 7.28C9.61333 7.28 7.4 10.08 7.4 13.0267C7.4 14.1733 7.77333 15.3333 8.38667 16.0933C8.50667 16.1733 8.50667 16.28 8.46667 16.48L8.08 17.9333C8.08 18.16 7.93334 18.24 7.70667 18.08C6 17.3333 5.01333 14.9067 5.01333 12.9467C5.01333 8.73334 8 4.90667 13.76 4.90667C18.3467 4.90667 21.92 8.2 21.92 12.5733C21.92 17.16 19.08 20.84 15.0133 20.84C13.72 20.84 12.4533 20.1467 12 19.3333L11.1067 22.4933C10.8 23.64 9.96 25.1733 9.38667 26.0933V26.0533Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </a>
+              <a class="footer__icon" href="#"
+                ><svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M20 4C22.76 6.72 23.8 10.52 23.1467 14.0667C23.6933 15.0267 24 16.1467 24 17.3333C24 19.1014 23.2976 20.7971 22.0474 22.0474C20.7971 23.2976 19.1014 24 17.3333 24C16.1467 24 15.0267 23.6933 14.0667 23.1467C10.52 23.8 6.72 22.76 4 20C1.24 17.28 0.2 13.48 0.853333 9.93333C0.306667 8.97333 0 7.85333 0 6.66667C0 4.89856 0.702379 3.20286 1.95262 1.95262C3.20286 0.702379 4.89856 0 6.66667 0C7.85333 0 8.97333 0.306667 9.93333 0.853333C13.48 0.2 17.28 1.24 20 4ZM12.0533 18.88C15.88 18.88 17.7867 17.04 17.7867 14.56C17.7867 12.9733 17.04 11.28 14.1467 10.6267L11.4933 10.04C10.48 9.81333 9.33333 9.50667 9.33333 8.56C9.33333 7.6 10.1333 6.93333 11.6 6.93333C14.5733 6.93333 14.2933 8.97333 15.7733 8.97333C16.5467 8.97333 17.2133 8.52 17.2133 7.73333C17.2133 5.90667 14.2933 4.53333 11.8133 4.53333C9.13333 4.53333 6.26667 5.68 6.26667 8.72C6.26667 10.1867 6.78667 11.7467 9.66667 12.4667L13.2533 13.3733C14.3333 13.64 14.6 14.24 14.6 14.8C14.6 15.7067 13.6933 16.6 12.0533 16.6C8.84 16.6 9.28 14.1333 7.56 14.1333C6.78667 14.1333 6.22667 14.6667 6.22667 15.4267C6.22667 16.9067 8 18.88 12.0533 18.88Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </a>
+              <!--  -->
+            </ul>
+          </div>
+          <!--  -->
+          <div class="footer__services">
+            <h2 class="footer__title">Наши услуги</h2>
+            <ul class="footer__list">
+              <li class="footer__item">
+                <a class="footer__item--link" href="#">Прогулки в горы летом</a>
+              </li>
+              <li class="footer__item">
+                <a class="footer__item--link" href="#">Зимние походы в горы</a>
+              </li>
+              <li class="footer__item">
+                <a class="footer__item--link" href="#"
+                  >Посещение храмов в горах</a
+                >
+              </li>
+              <li class="footer__item">
+                <a class="footer__item--link" href="#"
+                  >Экстремальные виды туризма</a
+                >
+              </li>
+              <li class="footer__item">
+                <a class="footer__item--link" href="#"
+                  >Походы в джунглях Амазонии</a
+                >
+                <p class="footer__item--new">NEW</p>
+              </li>
+              <li class="footer__item">
+                <a class="footer__item--link" href="#">Поездка в Африку</a>
+              </li>
+            </ul>
+          </div>
+          <!--  -->
+          <div class="footer__important">
+            <h2 class="footer__title">Важно для путешествий</h2>
+            <ul class="footer__list">
+              <li class="footer__item">
+                <a class="footer__item--link" href="#"
+                  >Как собрать в долгий поход?</a
+                >
+              </li>
+              <li class="footer__item">
+                <a class="footer__item--link" href="#"
+                  >Жизненно важные предметы для похода</a
+                >
+              </li>
+              <li class="footer__item">
+                <a class="footer__item--link" href="#"
+                  >Медицинская страховка, гарантии безопасности</a
+                >
+              </li>
+              <li class="footer__item">
+                <a class="footer__item--link" href="#"
+                  >Если вы врач - загляните сюда</a
+                >
+              </li>
+            </ul>
+          </div>
+          <!--  -->
+        </div>
+      </div>
+      <div class="wrapper wrapper-black">
+        <div class="container">
+          <p class="footer__bottom">ИП Константинопольский К.К., 2023</p>
+          <p class="footer__bottom">Политика обработки персональных данных</p>
+        </div>
+      </div>
+    </footer>
+    <script src="js/splide.min.js"></script>
+    <script src="js/lightgallery.min.js"></script>
+    <script src="js/lg-video.min.js"></script>
+
+    <script src="js/index.js" type="module"></script>
+  </body>
+</html>

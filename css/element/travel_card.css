@@ -1,0 +1,110 @@
+.travel__slide {
+  border-radius: 32px;
+  position: relative;
+
+  width: 285px;
+  height: 400px;
+
+  overflow: hidden;
+}
+
+.travel__slide--img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  z-index: -1;
+}
+
+.travel__slide--rat {
+  position: absolute;
+  top: 37px;
+  right: 0px;
+
+  display: flex;
+  gap: 3px;
+
+  padding: 4px 8px;
+  border-radius: 4px 0 0 4px;
+  background-color: rgb(from var(--color-text-white-small) r g b / 0.4);
+  backdrop-filter: blur(4px);
+
+  transition: all 0.3s linear;
+}
+
+.travel__slide--content {
+  position: absolute;
+  top: calc(100% - 75px);
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  color: var(--color-text-white-small);
+  padding: 23px 24px;
+
+  background-color: rgb(from var(--color-text-white) r g b / 0.2);
+  backdrop-filter: blur(6px);
+
+  transition: all 0.3s linear;
+}
+
+.travel__slide--header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+
+  margin-bottom: 38px;
+}
+
+.travel__slide--h3 {
+  font-size: var(--font-size-h3);
+  font-weight: 700;
+  line-height: 120%;
+  white-space: nowrap;
+}
+
+.travel__slide--subtitle {
+  display: none;
+  font-size: var(--font-size-small);
+  line-height: 18px;
+}
+
+.travel__slide--price {
+  background-color: rgb(from var(--color-text-white) r g b / 0.3);
+  padding: 6px 12px;
+  white-space: nowrap;
+
+  font-weight: 700;
+  line-height: 18px;
+  color: var(--color-text-white-small);
+}
+
+.travel__slide--text {
+  font-size: clamp(12px, 3.8vw, var(--font-size-small));
+  line-height: 150%;
+}
+
+.travel__slide--btn {
+  margin-top: auto;
+}
+.travel__slide--btn .btn:focus {
+  outline: 2px solid var(--color-bg-green);
+  outline-offset: -4px;
+}
+
+.travel__slide:hover .travel__slide--rat,
+.travel__slide:focus-within .travel__slide--rat {
+  opacity: 0;
+}
+
+.travel__slide:hover .travel__slide--content,
+.travel__slide:focus-within .travel__slide--content {
+  top: 0;
+}

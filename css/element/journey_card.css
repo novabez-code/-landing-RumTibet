@@ -1,0 +1,72 @@
+.journey__slide {
+  border-radius: 6px;
+  overflow: hidden;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.journey__slide--img {
+  width: 100%;
+  aspect-ratio: 1.02/1;
+  object-fit: cover;
+}
+
+.journey__slide--content {
+  padding: 16px;
+  background-color: var(--color-text-white-small);
+
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 16px;
+}
+
+.journey__slide--title {
+  display: inline-block;
+
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
+
+  color: var(--color-text-black);
+
+  transition: all 0.2s linear;
+}
+
+.journey__slide--text {
+  font-size: var(--font-size-small);
+  line-height: 20px;
+}
+
+.journey__slide--footer {
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: auto;
+}
+
+.journey__slide--data {
+  font-size: var(--font-size-small);
+  font-weight: 700;
+  line-height: 20px;
+
+  color: var(--color-text-yellow);
+}
+
+.journey__slide--link {
+  font-size: var(--font-size-small);
+  font-weight: 700;
+  line-height: 20px;
+
+  color: var(--color-bg-green);
+
+  transition: all 0.2s linear;
+}
+
+.journey__slide--title:hover,
+.journey__slide--link:hover {
+  color: var(--color-bg-green);
+  text-decoration: underline;
+}

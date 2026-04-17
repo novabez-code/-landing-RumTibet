@@ -1,0 +1,39 @@
+.btn {
+  font-size: var(--font-size);
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 1.2%;
+
+  color: var(--color-text-white-small);
+  background-color: var(--color-bg-green);
+  border: 1px solid var(--color-bg-green);
+  border-radius: 4px;
+
+  padding: 12px 24px;
+
+  transition: all 0.3s linear;
+}
+
+.btn:hover {
+  background-color: var(--color-text-white-small);
+  color: var(--color-bg-green);
+}
+
+.btn-white {
+  color: var(--color-bg-green);
+  background-color: var(--color-text-white-small);
+}
+
+.btn-white:hover {
+  color: var(--color-text-white-small);
+  background-color: var(--color-bg-green);
+}
+
+@media (min-width: 768px) {
+  .btn {
+    padding: 16px 36px;
+  }
+  .btn.small {
+    padding: 12px 24px;
+  }
+}
