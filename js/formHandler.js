@@ -32,9 +32,8 @@ function showMessage(text, isSuccess) {
 }
 
 form.addEventListener("submit", async function (e) {
-  if (honeypotInput.value !== "") {
-    e.preventDefault();
-
+  e.preventDefault();
+  if (honeypotInput.value === "") {
     toggleLoading(true);
     const email = e.target.elements["form_email"].value;
 
