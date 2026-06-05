@@ -14,6 +14,10 @@
   transition: all 0.3s linear;
 }
 
+.btn:disabled {
+  opacity: 0.5;
+}
+
 .btn:hover {
   background-color: var(--color-text-white-small);
   color: var(--color-bg-green);

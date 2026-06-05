@@ -455,7 +455,7 @@
       <section class="form">
         <div class="wrapper wrapper-white">
           <div class="container">
-            <form class="form__content" id="newsletter-form" novalidate>
+            <form class="form__content" id="newsletter-form">
               <div class="form__header">
                 <p class="subtitle mobile">фото-отчет</p>
                 <h2 class="title mobile">Делимся впечатлениями</h2>
@@ -469,18 +469,29 @@
                 <label class="form__label" for="form__email"
                   >Введите e-mail адрес</label
                 >
-                <div class="form__input">
+                <div id="user_email" class="form__input">
                   <input
-                    id="form__email"
+                    id="form_email"
+                    name="form_email"
                     class="form__email"
                     type="email"
                     placeholder="name@domain.com"
+                    required
                   />
-                  <button type="submit" class="btn">
+                  <button id="submit_btn" type="submit" class="btn">
                     Подписаться на новости
                   </button>
+                  <div id="form__message" class="form__message"></div>
                 </div>
-
+                <div class="form__honey">
+                  <input
+                    type="text"
+                    id="form_honeypot"
+                    name="form_honeypot"
+                    tabindex="-1"
+                    autocomplete="off"
+                  />
+                </div>
                 <p class="form__text">
                   подписываясь на новости, вы автоматически соглашаетесь с
                   <a class="form__link" href="#"
@@ -643,7 +654,9 @@
     <script src="js/splide.min.js"></script>
     <script src="js/lightgallery.min.js"></script>
     <script src="js/lg-video.min.js"></script>
+    <!-- <script type="text/javascript" src="./js/email.min.js" defer></script> -->
 
     <script src="js/index.js" type="module"></script>
+    <script src="./js/formHandler.js" type="module"></script>
   </body>
 </html>
