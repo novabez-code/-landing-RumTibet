@@ -76,29 +76,22 @@
             <!--  -->
             <form class="intro__program" id="intro-search-form" novalidate>
               <div class="intro__program--loc">
-                <select
-                  class="intro__program--input"
-                  id="travel-choice"
-                  required
-                >
-                  <option value="" disabled selected>Локация для тура</option>
-                  <option value="Италия">Италия</option>
-                  <option value="Индия">Индия</option>
-                  <option value="Россия">Россия</option>
-                  <option value="США">США</option>
-                </select>
+                <button type="button" id="travel-choice-btn">
+                  Локации для тура
+                </button>
+                <div id="travel-choice-menu" class="travel-choice-menu">
+                  <div class="travel-choice-item" data-tech="ru">Россия</div>
+                  <div class="travel-choice-item" data-tech="ind">Индия</div>
+                  <div class="travel-choice-item" data-tech="can">Канада</div>
+                </div>
+                <input type="hidden" name="travel-choice" id="travel-choice" />
                 <label class="intro__program--label" for="travel-choice"
                   >выберите из списка</label
                 >
               </div>
               <!--  -->
               <div class="intro__program--data">
-                <input
-                  class="intro__program--date"
-                  id="travel-data"
-                  type="date"
-                  placeholder="Локация для тура"
-                />
+                <input type="hidden" name="travel-data" id="travel-data" />
 
                 <label class="intro__program--label" for="travel-data"
                   >укажите диапазон</label
@@ -106,17 +99,31 @@
               </div>
               <!--  -->
               <div class="intro__program--part">
-                <select
-                  class="intro__program--input"
-                  id="travel-participants"
-                  required
+                <button type="button" id="travel-participants-btn">
+                  Учасники
+                </button>
+                <div
+                  id="travel-participants-menu"
+                  class="travel-participants-menu"
                 >
-                  <option value="" disabled selected>Участники</option>
-                  <option value="1">1 человек</option>
-                  <option value="2">2 человека</option>
-                  <option value="3">3 человека</option>
-                  <option value="4">4 человека</option>
-                </select>
+                  <div class="travel-participants-item" data-tech="1">
+                    1 учасник
+                  </div>
+                  <div class="travel-participants-item" data-tech="2">
+                    2 учасника
+                  </div>
+                  <div class="travel-participants-item" data-tech="3">
+                    3 учасника
+                  </div>
+                  <div class="travel-participants-item" data-tech="4">
+                    4 учасника
+                  </div>
+                </div>
+                <input
+                  type="hidden"
+                  name="travel-participants"
+                  id="travel-participants"
+                />
                 <label class="intro__program--label" for="travel-participants"
                   >минимум 4 человека</label
                 >
@@ -651,11 +658,14 @@
         </div>
       </div>
     </footer>
+    <script src="js/floating-core.js"></script>
+    <script src="js/floating-dom.js"></script>
     <script src="js/splide.min.js"></script>
     <script src="js/lightgallery.min.js"></script>
     <script src="js/lg-video.min.js"></script>
 
     <script src="js/index.js" type="module"></script>
+    <script src="./js/intro.js" type="module"></script>
     <script src="./js/formHandler.js" type="module"></script>
   </body>
 </html>

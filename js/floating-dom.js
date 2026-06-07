@@ -190,10 +190,10 @@
     })(l, o, i)
       ? z(l)
       : c(0);
-    let a = (r.left + ux) / sx,
-      h = (r.top + uy) / sy,
-      p = r.width / sx,
-      g = r.height / sy;
+    let a = (r.left + u.x) / s.x,
+      h = (r.top + u.y) / s.y,
+      p = r.width / s.x,
+      g = r.height / s.y;
     if (l) {
       const t = f(l),
         e = i && d(i) ? f(i) : i;
@@ -203,12 +203,12 @@
         const t = H(o),
           e = o.getBoundingClientRect(),
           i = C(o),
-          r = e.left + (o.clientLeft + parseFloat(i.paddingLeft)) * tx,
-          c = e.top + (o.clientTop + parseFloat(i.paddingTop)) * ty;
-        ((a *= tx),
-          (h *= ty),
-          (p *= tx),
-          (g *= ty),
+          r = e.left + (o.clientLeft + parseFloat(i.paddingLeft)) * t.x,
+          c = e.top + (o.clientTop + parseFloat(i.paddingTop)) * t.y;
+        ((a *= t.x),
+          (h *= t.y),
+          (p *= t.x),
+          (g *= t.y),
           (a += r),
           (h += c),
           (n = f(o)),
@@ -278,15 +278,15 @@
           i = n.left + t.clientLeft,
           r = h(t) ? H(t) : c(1);
         return {
-          width: t.clientWidth * rx,
-          height: t.clientHeight * ry,
-          x: i * rx,
-          y: o * ry,
+          width: t.clientWidth * r.x,
+          height: t.clientHeight * r.y,
+          x: i * r.x,
+          y: o * r.y,
         };
       })(n, i);
     else {
       const e = z(t);
-      r = { x: nx - ex, y: ny - ey, width: n.width, height: n.height };
+      r = { x: n.x - e.x, y: n.y - e.y, width: n.width, height: n.height };
     }
     return e.rectToClientRect(r);
   }
@@ -304,18 +304,18 @@
     let f = { scrollLeft: 0, scrollTop: 0 };
     const a = c(0);
     function d() {
-      ax = B(i);
+      a.x = B(i);
     }
     if (o || (!o && !r))
       if ((("body" !== s(e) || g(i)) && (f = S(e)), o)) {
         const t = A(e, !0, r, e);
-        ((ax = t.x + e.clientLeft), (ay = t.y + e.clientTop));
+        ((a.x = t.x + e.clientLeft), (a.y = t.y + e.clientTop));
       } else i && d();
     r && !o && i && d();
     const p = !i || o || r ? c(0) : V(i, f);
     return {
-      x: l.left + f.scrollLeft - ax - px,
-      y: l.top + f.scrollTop - ay - py,
+      x: l.left + f.scrollLeft - a.x - p.x,
+      y: l.top + f.scrollTop - a.y - p.y,
       width: l.width,
       height: l.height,
     };
@@ -369,14 +369,14 @@
         m = h(o);
       if ((m || (!m && !r)) && (("body" !== s(o) || g(l)) && (a = S(o)), m)) {
         const t = A(o);
-        ((d = H(o)), (px = t.x + o.clientLeft), (py = t.y + o.clientTop));
+        ((d = H(o)), (p.x = t.x + o.clientLeft), (p.y = t.y + o.clientTop));
       }
       const w = !l || m || r ? c(0) : V(l, a);
       return {
-        width: n.width * dx,
-        height: n.height * dy,
-        x: nx * dx - a.scrollLeft * d.x + p.x + wx,
-        y: ny * dy - a.scrollTop * d.y + p.y + wy,
+        width: n.width * d.x,
+        height: n.height * d.y,
+        x: n.x * d.x - a.scrollLeft * d.x + p.x + w.x,
+        y: n.y * d.y - a.scrollTop * d.y + p.y + w.y,
       };
     },
     getDocumentElement: u,
@@ -428,7 +428,7 @@
           (h = n(i.bottom, h)),
           (p = o(i.left, p)));
       }
-      return { width: ap, height: hu, x: p, y: u };
+      return { width: a - p, height: h - u, x: p, y: u };
     },
     getOffsetParent: U,
     getElementRects: async function (t) {
@@ -455,7 +455,7 @@
   };
   function X(t, e) {
     return (
-      tx === ex && t.y === ey && t.width === e.width && t.height === e.height
+      t.x === e.x && t.y === e.y && t.width === e.width && t.height === e.height
     );
   }
   const Y = e.detectOverflow,

@@ -122,7 +122,7 @@
     let w;
     switch (s) {
       case "top":
-        w = { x: p, y: iy - o.height };
+        w = { x: p, y: i.y - o.height };
         break;
       case "bottom":
         w = { x: p, y: i.y + i.height };
@@ -131,10 +131,10 @@
         w = { x: i.x + i.width, y: h };
         break;
       case "left":
-        w = { x: ix - o.width, y: h };
+        w = { x: i.x - o.width, y: h };
         break;
       default:
-        w = { x: ix, y: iy };
+        w = { x: i.x, y: i.y };
     }
     switch (c(e)) {
       case "start":
@@ -196,10 +196,10 @@
           : w,
       );
     return {
-      top: (y.top - b.top + p.top) / vy,
-      bottom: (b.bottom - y.bottom + p.bottom) / vy,
-      left: (y.left - b.left + p.left) / vx,
-      right: (b.right - y.right + p.right) / vx,
+      top: (y.top - b.top + p.top) / v.y,
+      bottom: (b.bottom - y.bottom + p.bottom) / v.y,
+      left: (y.left - b.left + p.left) / v.x,
+      right: (b.right - y.right + p.right) / v.x,
     };
   }
   function T(t, e) {
@@ -259,7 +259,7 @@
         S = o(y[O], H),
         B = o(y[P], H),
         F = S,
-        j = kb[v] - B,
+        j = k - b[v] - B,
         z = k / 2 - b[v] / 2 + C,
         M = l(F, z, j),
         V =
@@ -267,10 +267,14 @@
           null != c(r) &&
           z !== M &&
           a.reference[v] / 2 - (z < F ? S : B) - b[v] / 2 < 0,
-        W = V ? (z < F ? zF : zj) : 0;
+        W = V ? (z < F ? z - F : z - j) : 0;
       return {
         [x]: w[x] + W,
-        data: { [x]: M, centerOffset: zMW, ...(V && { alignmentOffset: W }) },
+        data: {
+          [x]: M,
+          centerOffset: z - M - W,
+          ...(V && { alignmentOffset: W }),
+        },
         reset: V,
       };
     },
@@ -584,12 +588,12 @@
                   : l.getClientRects(i.reference))) || [],
               ),
               h = (function (t) {
-                const e = t.slice().sort((t, e) => ty - ey),
+                const e = t.slice().sort((t, e) => t.y - e.y),
                   n = [];
                 let i = null;
                 for (let t = 0; t < e.length; t++) {
                   const o = e[t];
-                  (!i || oy - iy > i.height / 2
+                  (!i || o.y - i.y > i.height / 2
                     ? n.push([o])
                     : n[n.length - 1].push(o),
                     (i = o));
@@ -630,8 +634,8 @@
                         bottom: r,
                         left: a,
                         right: l,
-                        width: la,
-                        height: ro,
+                        width: l - a,
+                        height: r - o,
                         x: a,
                         y: o,
                       };
@@ -647,8 +651,8 @@
                       bottom: s,
                       left: i,
                       right: e,
-                      width: ei,
-                      height: sl,
+                      width: e - i,
+                      height: s - l,
                       x: i,
                       y: l,
                     };
@@ -752,7 +756,7 @@
               null != (i = l.arrow) &&
               i.alignmentOffset
               ? {}
-              : { x: o + mx, y: r + my, data: { ...m, placement: a } };
+              : { x: o + m.x, y: r + m.y, data: { ...m, placement: a } };
           },
         }
       );
@@ -785,16 +789,16 @@
               v = p[y];
             if (a) {
               const t = "y" === w ? "bottom" : "right";
-              x = l(x + h["y" === w ? "top" : "left"], x, xh[t]);
+              x = l(x + h["y" === w ? "top" : "left"], x, x - h[t]);
             }
             if (c) {
               const t = "y" === y ? "bottom" : "right";
-              v = l(v + h["y" === y ? "top" : "left"], v, vh[t]);
+              v = l(v + h["y" === y ? "top" : "left"], v, v - h[t]);
             }
             const b = u.fn({ ...e, [w]: x, [y]: v });
             return {
               ...b,
-              data: { x: bx - n, y: by - i, enabled: { [w]: a, [y]: c } },
+              data: { x: b.x - n, y: b.y - i, enabled: { [w]: a, [y]: c } },
             };
           },
         }
@@ -826,10 +830,10 @@
                     ? "left"
                     : "right"))
               : ((R = y), (A = "end" === w ? "top" : "bottom"));
-            const O = bh.top - h.bottom,
-              P = vh.left - h.right,
-              D = o(bh[A], O),
-              T = o(vh[R], P),
+            const O = b - h.top - h.bottom,
+              P = v - h.left - h.right,
+              D = o(b - h[A], O),
+              T = o(v - h[R], P),
               E = !e.middlewareData.shift;
             let L = D,
               k = T;
