@@ -27,6 +27,7 @@
       content="Организуем туры в Тибет и уникальные путешествия по горным маршрутам. Выбирайте направление, дату и количество участников — отправляйтесь в приключение."
     />
     <title>RumTibet — туры и путешествия в Тибет</title>
+    <script src="./js/metrika.js"></script>
   </head>
   <body>
     <header class="header">
@@ -559,7 +560,14 @@
       <section class="form">
         <div class="wrapper wrapper-white">
           <div class="container">
-            <form class="form__content" id="newsletter-form">
+            <form
+              class="form__content"
+              id="newsletter-form"
+              onsubmit="
+                ym(109713584, 'reachGoal', 'form_submit');
+                return true;
+              "
+            >
               <div class="form__header">
                 <p class="subtitle mobile">фото-отчет</p>
                 <h2 class="title mobile">Делимся впечатлениями</h2>
@@ -626,7 +634,15 @@
             </p>
             <div class="footer__contact">
               <a class="footer__link" href="#">info@domain.com</a>
-              <a class="footer__link" href="#">+7 (123) 456-78-90</a>
+              <a
+                class="footer__link"
+                href="tel:+71234567890"
+                onclick="
+                  ym(109713584, 'reachGoal', 'tel_click');
+                  return true;
+                "
+                >+7 (123) 456-78-90</a
+              >
             </div>
             <ul class="footer__links">
               <a class="footer__icon" href="#"
