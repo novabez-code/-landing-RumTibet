@@ -80,9 +80,16 @@
                   Локации для тура
                 </button>
                 <div id="travel-choice-menu" class="travel-choice-menu">
-                  <div class="travel-choice-item" data-tech="ru">Россия</div>
-                  <div class="travel-choice-item" data-tech="ind">Индия</div>
-                  <div class="travel-choice-item" data-tech="can">Канада</div>
+                  <div class="travel-choice-item" data-tech="Неважно">
+                    Неважно
+                  </div>
+                  <div class="travel-choice-item" data-tech="Россия">
+                    Россия
+                  </div>
+                  <div class="travel-choice-item" data-tech="Индия">Индия</div>
+                  <div class="travel-choice-item" data-tech="Канада">
+                    Канада
+                  </div>
                 </div>
                 <input type="hidden" name="travel-choice" id="travel-choice" />
                 <label class="intro__program--label" for="travel-choice"
@@ -91,7 +98,12 @@
               </div>
               <!--  -->
               <div class="intro__program--data">
-                <input type="hidden" name="travel-data" id="travel-data" />
+                <input
+                  type="date"
+                  name="travel-data"
+                  id="travel-data"
+                  placeholder="дд.мм.гггг"
+                />
 
                 <label class="intro__program--label" for="travel-data"
                   >укажите диапазон</label
@@ -106,6 +118,9 @@
                   id="travel-participants-menu"
                   class="travel-participants-menu"
                 >
+                  <div class="travel-participants-item" data-tech="Неважно">
+                    Неважно
+                  </div>
                   <div class="travel-participants-item" data-tech="1">
                     1 учасник
                   </div>
@@ -658,6 +673,8 @@
         </div>
       </div>
     </footer>
+    <script src="js/flatpickr.min.js"></script>
+    <script src="js/ru.min.js"></script>
     <script src="js/floating-core.js"></script>
     <script src="js/floating-dom.js"></script>
     <script src="js/splide.min.js"></script>

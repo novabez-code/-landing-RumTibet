@@ -1,7 +1,6 @@
 const { computePosition, flip, shift, offset, autoUpdate, size } =
   FloatingUIDOM;
 
-// --- СЕЛЕКТОР 1 (Локации) ---
 const btnP = document.querySelector("#travel-choice-btn");
 const menuP = document.querySelector("#travel-choice-menu");
 const sInputP = document.querySelector("#travel-choice");
@@ -56,7 +55,7 @@ function selectElemP(item) {
   sInputP.value = item.getAttribute("data-tech");
   btnP.textContent = item.textContent;
   closeMenuP();
-  btnP.focus(); // Возвращаем фокус на кнопку после выбора
+  btnP.focus();
 }
 
 function closeMenuP() {
@@ -68,7 +67,6 @@ function closeMenuP() {
   }
 }
 
-// --- СЕЛЕКТОР 2 (Участники) ---
 const btnPP = document.querySelector("#travel-participants-btn");
 const menuPP = document.querySelector("#travel-participants-menu");
 const sInputPP = document.querySelector("#travel-participants");
@@ -123,7 +121,7 @@ function selectElemPP(item) {
   sInputPP.value = item.getAttribute("data-tech");
   btnPP.textContent = item.textContent;
   closeMenuPP();
-  btnPP.focus(); // Возвращаем фокус на кнопку после выбора
+  btnPP.focus();
 }
 
 function closeMenuPP() {
@@ -135,20 +133,15 @@ function closeMenuPP() {
   }
 }
 
-// --- НАДЕЖНОЕ УПРАВЛЕНИЕ КЛАВИАТУРОЙ И КЛИКАМИ ---
-
-// Закрытие меню при клике в любое свободное место
 document.addEventListener("click", () => {
   closeMenuP();
   closeMenuPP();
 });
 
-// Глобальный перехват клавиш (Tab и Escape) для закрытия
 document.addEventListener("keydown", (e) => {
   const isMenuPOpen = menuP.style.display === "block";
   const isMenuPPOpen = menuPP.style.display === "block";
 
-  // Закрытие по кнопке Escape
   if (e.key === "Escape") {
     if (isMenuPOpen) {
       closeMenuP();
@@ -161,36 +154,37 @@ document.addEventListener("keydown", (e) => {
     return;
   }
 
-  // Контроль клавиши Tab
   if (e.key === "Tab") {
-    // Если открыто первое меню
     if (isMenuPOpen) {
       const activeElement = document.activeElement;
       const lastItem = itemsP[itemsP.length - 1];
 
-      // Если мы нажали Tab на последнем элементе списка — закрываем меню
       if (activeElement === lastItem && !e.shiftKey) {
         closeMenuP();
       }
-      // Если нажали Shift+Tab на кнопке — закрываем меню
+
       if (activeElement === btnP && e.shiftKey) {
         closeMenuP();
       }
     }
 
-    // Если открыто второе меню
     if (isMenuPPOpen) {
       const activeElement = document.activeElement;
       const lastItem = itemsPP[itemsPP.length - 1];
 
-      // Если мы нажали Tab на последнем элементе списка — закрываем меню
       if (activeElement === lastItem && !e.shiftKey) {
         closeMenuPP();
       }
-      // Если нажали Shift+Tab на кнопке — закрываем меню
+
       if (activeElement === btnPP && e.shiftKey) {
         closeMenuPP();
       }
     }
   }
+});
+
+flatpickr("#travel-data", {
+  locale: "ru",
+  mode: "range",
+  dateFormat: "d.m.Y",
 });

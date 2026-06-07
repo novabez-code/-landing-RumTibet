@@ -114,7 +114,19 @@ document.addEventListener("DOMContentLoaded", function () {
   if (introForm) {
     introForm.addEventListener("submit", function (e) {
       e.preventDefault();
-      console.log("Поиск тура отправлен");
+      const form = new FormData(introForm);
+      const formInfo = Object.fromEntries(form.entries());
+
+      if (formInfo["travel-choice"] === "")
+        formInfo["travel-choice"] = "Неважно";
+      if (formInfo["travel-data"] === "") formInfo["travel-data"] = "Неважно";
+      if (formInfo["travel-participants"] === "")
+        formInfo["travel-participants"] = "Неважно";
+
+      if (formInfo)
+        console.log(
+          `Поиск программ в стране: ${formInfo["travel-choice"]} в период ${formInfo["travel-data"]} на ${formInfo["travel-participants"]} учасников.`,
+        );
     });
   }
 

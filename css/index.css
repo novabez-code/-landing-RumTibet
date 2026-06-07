@@ -5,6 +5,7 @@
 @import url(element/travel_card.css);
 @import url(element/journey_card.css);
 @import url(element/splide.min.css);
+@import url(element/flatpickr.min.css);
 
 @import url(block/header.css);
 @import url(block/intro.css);
