@@ -26,6 +26,14 @@ document.addEventListener("DOMContentLoaded", function () {
       },
     },
   });
+
+  renderCards(".travel__slider .splide__list", HTMLTravelCard, travelCardsData);
+  renderCards(
+    ".journey__slider .splide__list",
+    HTMLJourneyCard,
+    journeyCardsData,
+  );
+
   splide1.mount();
 
   var splide2 = new Splide(".journey__slider", {
@@ -136,13 +144,6 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("Подписка на новости отправлена");
     });
   }
-
-  renderCards(".travel__slider .splide__list", HTMLTravelCard, travelCardsData);
-  renderCards(
-    ".journey__slider .splide__list",
-    HTMLJourneyCard,
-    journeyCardsData,
-  );
 
   function fixTravelFocusIssue() {
     const slides = document.querySelectorAll(".travel__slider .splide__slide");

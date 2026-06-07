@@ -6,6 +6,7 @@
   height: 400px;
 
   overflow: hidden;
+  scroll-snap-align: none;
 }
 
 .travel__slide--img {
@@ -16,7 +17,8 @@
   height: 100%;
   object-fit: cover;
 
-  z-index: -1;
+  z-index: 0;
+  will-change: transform;
 }
 
 .travel__slide--rat {
@@ -39,6 +41,7 @@
   position: absolute;
   top: calc(100% - 75px);
   left: 0;
+  z-index: 1;
 
   width: 100%;
   height: 100%;
@@ -51,6 +54,7 @@
   background-color: rgb(from var(--color-text-white) r g b / 0.2);
   backdrop-filter: blur(6px);
 
+  will-change: top;
   transition: all 0.3s linear;
 }
 
@@ -99,12 +103,22 @@
   outline-offset: -4px;
 }
 
-.travel__slide:hover .travel__slide--rat,
-.travel__slide:focus-within .travel__slide--rat {
+/* .travel__slide:hover .travel__slide--rat,
+.travel__slide .travel__slide--rat {
   opacity: 0;
 }
 
 .travel__slide:hover .travel__slide--content,
-.travel__slide:focus-within .travel__slide--content {
+.travel__slide .travel__slide--content {
   top: 0;
+} */
+.travel__slide:hover .travel__slide--rat {
+  opacity: 0;
+}
+.travel__slide:hover .travel__slide--content {
+  top: 0;
+}
+.travel__slide:focus-within {
+  outline: 3px solid var(--color-text-yellow);
+  outline-offset: 2px;
 }

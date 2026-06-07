@@ -55,7 +55,7 @@ export function HTMLJourneyCard(obj) {
                       </p>
                       <div class="journey__slide--footer">
                         <p class="journey__slide--data">${obj.data}</p>
-                        <a class="journey__slide--link" href="# aria-label="Читать статью: ${obj.name}""
+                        <a class="journey__slide--link" href="#" aria-label="Читать статью: ${obj.name}""
                           >читать статью</a
                         >
                       </div>
