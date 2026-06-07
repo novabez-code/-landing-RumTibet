@@ -5,76 +5,19 @@ const btnP = document.querySelector("#travel-choice-btn");
 const menuP = document.querySelector("#travel-choice-menu");
 const sInputP = document.querySelector("#travel-choice");
 const itemsP = menuP.querySelectorAll(".travel-choice-item");
-let cleanTrackingP = null;
-
-function moveMenuP() {
-  computePosition(btnP, menuP, {
-    placement: "bottom-start",
-    middleware: [
-      offset(0),
-      flip(),
-      shift(),
-      size({
-        apply({ rects, elements }) {
-          Object.assign(elements.floating.style, {
-            width: `${rects.reference.width}px`,
-          });
-        },
-      }),
-    ],
-  }).then(({ x, y }) => {
-    menuP.style.left = `${x}px`;
-    menuP.style.top = `${y}px`;
-  });
-}
-
-btnP.addEventListener("click", (e) => {
-  e.stopPropagation();
-  if (menuP.style.display !== "block") {
-    closeMenuPP();
-    menuP.style.display = "block";
-    btnP.classList.add("active");
-    cleanTrackingP = autoUpdate(btnP, menuP, moveMenuP);
-  } else {
-    closeMenuP();
-  }
-});
-
-itemsP.forEach((item) => {
-  item.setAttribute("tabindex", "0");
-  item.addEventListener("click", () => selectElemP(item));
-  item.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      selectElemP(item);
-    }
-  });
-});
-
-function selectElemP(item) {
-  sInputP.value = item.getAttribute("data-tech");
-  btnP.textContent = item.textContent;
-  closeMenuP();
-  btnP.focus();
-}
-
-function closeMenuP() {
-  menuP.style.display = "none";
-  btnP.classList.remove("active");
-  if (cleanTrackingP) {
-    cleanTrackingP();
-    cleanTrackingP = null;
-  }
-}
 
 const btnPP = document.querySelector("#travel-participants-btn");
 const menuPP = document.querySelector("#travel-participants-menu");
 const sInputPP = document.querySelector("#travel-participants");
 const itemsPP = menuPP.querySelectorAll(".travel-participants-item");
-let cleanTrackingPP = null;
 
-function moveMenuPP() {
-  computePosition(btnPP, menuPP, {
+const trackingState = {
+  P: null,
+  PP: null,
+};
+
+function moveMenu(menu, btn) {
+  computePosition(btn, menu, {
     placement: "bottom-start",
     middleware: [
       offset(0),
@@ -89,53 +32,65 @@ function moveMenuPP() {
       }),
     ],
   }).then(({ x, y }) => {
-    menuPP.style.left = `${x}px`;
-    menuPP.style.top = `${y}px`;
+    menu.style.left = `${x}px`;
+    menu.style.top = `${y}px`;
   });
 }
-
-btnPP.addEventListener("click", (e) => {
-  e.stopPropagation();
-  if (menuPP.style.display !== "block") {
-    closeMenuP();
-    menuPP.style.display = "block";
-    btnPP.classList.add("active");
-    cleanTrackingPP = autoUpdate(btnPP, menuPP, moveMenuPP);
-  } else {
-    closeMenuPP();
+function closeMenu(menu, btn, stateKey) {
+  menu.style.display = "none";
+  btn.classList.remove("active");
+  if (trackingState[stateKey]) {
+    trackingState[stateKey]();
+    trackingState[stateKey] = null;
   }
-});
-
-itemsPP.forEach((item) => {
-  item.setAttribute("tabindex", "0");
-  item.addEventListener("click", () => selectElemPP(item));
-  item.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      selectElemPP(item);
+}
+function selectElem(item, input, btn, menu, stateKey) {
+  input.value = item.getAttribute("data-tech");
+  btn.textContent = item.textContent;
+  closeMenu(menu, btn, stateKey);
+  btn.focus();
+}
+function addEBtn(btn, btn2, menu, menu2, currentKey, otherKey) {
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    if (menu.style.display !== "block") {
+      closeMenu(menu2, btn2, otherKey);
+      menu.style.display = "block";
+      btn.classList.add("active");
+      trackingState[currentKey] = autoUpdate(btn, menu, () =>
+        moveMenu(menu, btn),
+      );
+    } else {
+      closeMenu(menu, btn, currentKey);
     }
   });
-});
-
-function selectElemPP(item) {
-  sInputPP.value = item.getAttribute("data-tech");
-  btnPP.textContent = item.textContent;
-  closeMenuPP();
-  btnPP.focus();
+}
+function addEItem(i, btn, menu, input, stateKey) {
+  i.forEach((item) => {
+    item.setAttribute("tabindex", "0");
+    item.addEventListener("click", () =>
+      selectElem(item, input, btn, menu, stateKey),
+    );
+    item.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        selectElem(item, input, btn, menu, stateKey);
+      }
+    });
+  });
 }
 
-function closeMenuPP() {
-  menuPP.style.display = "none";
-  btnPP.classList.remove("active");
-  if (cleanTrackingPP) {
-    cleanTrackingPP();
-    cleanTrackingPP = null;
-  }
-}
+moveMenu(menuP, btnP);
+addEBtn(btnP, btnPP, menuP, menuPP, "P", "PP");
+addEItem(itemsP, btnP, menuP, sInputP, "P");
+
+moveMenu(menuPP, btnPP);
+addEBtn(btnPP, btnP, menuPP, menuP, "PP", "P");
+addEItem(itemsPP, btnPP, menuPP, sInputPP, "PP");
 
 document.addEventListener("click", () => {
-  closeMenuP();
-  closeMenuPP();
+  closeMenu(menuP, btnP, "P");
+  closeMenu(menuPP, btnPP, "PP");
 });
 
 document.addEventListener("keydown", (e) => {
@@ -144,11 +99,11 @@ document.addEventListener("keydown", (e) => {
 
   if (e.key === "Escape") {
     if (isMenuPOpen) {
-      closeMenuP();
+      closeMenu(menuP, btnP, "P");
       btnP.focus();
     }
     if (isMenuPPOpen) {
-      closeMenuPP();
+      closeMenu(menuPP, btnPP, "PP");
       btnPP.focus();
     }
     return;
@@ -160,11 +115,11 @@ document.addEventListener("keydown", (e) => {
       const lastItem = itemsP[itemsP.length - 1];
 
       if (activeElement === lastItem && !e.shiftKey) {
-        closeMenuP();
+        closeMenu(menuP, btnP, "P");
       }
 
       if (activeElement === btnP && e.shiftKey) {
-        closeMenuP();
+        closeMenu(menuP, btnP, "P");
       }
     }
 
@@ -173,11 +128,11 @@ document.addEventListener("keydown", (e) => {
       const lastItem = itemsPP[itemsPP.length - 1];
 
       if (activeElement === lastItem && !e.shiftKey) {
-        closeMenuPP();
+        closeMenu(menuPP, btnPP, "PP");
       }
 
       if (activeElement === btnPP && e.shiftKey) {
-        closeMenuPP();
+        closeMenu(menuPP, btnPP, "PP");
       }
     }
   }
