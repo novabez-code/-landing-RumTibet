@@ -40,7 +40,7 @@ form.addEventListener("submit", async function (e) {
     try {
       await emailjs.sendForm(SERVER_ID, TEMPLATE_ID, this);
 
-      showMessage(`Писмо отправленно на ${email}`, true);
+      showMessage(`Письмо отправлено на ${email}`, true);
       form.reset();
     } catch (err) {
       console.error("Ошибка EmailJS:", err);

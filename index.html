@@ -12,7 +12,21 @@
     <link rel="stylesheet" href="css/element/lightgallery-bundle.min.css" />
     <link rel="stylesheet" href="css/index.css" />
     <link rel="icon" type="image/svg+xml" href="img/icon/logo.svg" />
-    <title>РуиТибет</title>
+
+    <meta property="og:title" content="RumTibet — туры и путешествия в Тибет" />
+    <meta
+      property="og:description"
+      content="Организуем туры в Тибет и уникальные путешествия по горным маршрутам. Выбирайте направление, дату и количество участников."
+    />
+    <meta property="og:image" content="img/intro__bg.webp" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_RU" />
+
+    <meta
+      name="description"
+      content="Организуем туры в Тибет и уникальные путешествия по горным маршрутам. Выбирайте направление, дату и количество участников — отправляйтесь в приключение."
+    />
+    <title>RumTibet — туры и путешествия в Тибет</title>
   </head>
   <body>
     <header class="header">
@@ -76,18 +90,52 @@
             <!--  -->
             <form class="intro__program" id="intro-search-form" novalidate>
               <div class="intro__program--loc">
-                <button type="button" id="travel-choice-btn">
+                <button
+                  type="button"
+                  id="travel-choice-btn"
+                  aria-haspopup="listbox"
+                  aria-expanded="false"
+                  aria-controls="travel-choice-list"
+                  aria-labelledby="travel-choice-label travel-choice-btn"
+                >
                   Локации для тура
                 </button>
-                <div id="travel-choice-menu" class="travel-choice-menu">
-                  <div class="travel-choice-item" data-tech="Неважно">
+                <div
+                  id="travel-choice-menu"
+                  class="travel-choice-menu"
+                  role="listbox"
+                  aria-labelledby="travel-choice-label"
+                >
+                  <div
+                    class="travel-choice-item"
+                    data-tech="Неважно"
+                    role="option"
+                    aria-selected="false"
+                  >
                     Неважно
                   </div>
-                  <div class="travel-choice-item" data-tech="Россия">
+                  <div
+                    class="travel-choice-item"
+                    data-tech="Россия"
+                    role="option"
+                    aria-selected="false"
+                  >
                     Россия
                   </div>
-                  <div class="travel-choice-item" data-tech="Индия">Индия</div>
-                  <div class="travel-choice-item" data-tech="Канада">
+                  <div
+                    class="travel-choice-item"
+                    data-tech="Индия"
+                    role="option"
+                    aria-selected="false"
+                  >
+                    Индия
+                  </div>
+                  <div
+                    class="travel-choice-item"
+                    data-tech="Канада"
+                    role="option"
+                    aria-selected="false"
+                  >
                     Канада
                   </div>
                 </div>
@@ -111,26 +159,60 @@
               </div>
               <!--  -->
               <div class="intro__program--part">
-                <button type="button" id="travel-participants-btn">
+                <button
+                  type="button"
+                  id="travel-participants-btn"
+                  aria-haspopup="listbox"
+                  aria-expanded="false"
+                  aria-controls="travel-participants-list"
+                  aria-labelledby="travel-participants-label travel-participants-btn"
+                >
                   Учасники
                 </button>
                 <div
                   id="travel-participants-menu"
                   class="travel-participants-menu"
+                  role="listbox"
+                  aria-labelledby="travel-participants-label"
                 >
-                  <div class="travel-participants-item" data-tech="Неважно">
+                  <div
+                    class="travel-participants-item"
+                    data-tech="Неважно"
+                    role="option"
+                    aria-selected="false"
+                  >
                     Неважно
                   </div>
-                  <div class="travel-participants-item" data-tech="1">
+                  <div
+                    class="travel-participants-item"
+                    data-tech="1"
+                    role="option"
+                    aria-selected="false"
+                  >
                     1 учасник
                   </div>
-                  <div class="travel-participants-item" data-tech="2">
+                  <div
+                    class="travel-participants-item"
+                    data-tech="2"
+                    role="option"
+                    aria-selected="false"
+                  >
                     2 учасника
                   </div>
-                  <div class="travel-participants-item" data-tech="3">
+                  <div
+                    class="travel-participants-item"
+                    data-tech="3"
+                    role="option"
+                    aria-selected="false"
+                  >
                     3 учасника
                   </div>
-                  <div class="travel-participants-item" data-tech="4">
+                  <div
+                    class="travel-participants-item"
+                    data-tech="4"
+                    role="option"
+                    aria-selected="false"
+                  >
                     4 учасника
                   </div>
                 </div>
@@ -497,6 +579,7 @@
                     name="form_email"
                     class="form__email"
                     type="email"
+                    pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$"
                     placeholder="name@domain.com"
                     required
                   />
