@@ -33,7 +33,7 @@
 
 .btn:focus-visible {
   outline: 3px solid #f2be22;
-  outline-offset: 4px;
+  outline-offset: 0px;
 }
 
 .journey__slide--title:focus-visible,

@@ -18,7 +18,8 @@
   object-fit: cover;
 
   z-index: 0;
-  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .travel__slide--rat {
@@ -116,6 +117,12 @@
   opacity: 0;
 }
 .travel__slide:hover .travel__slide--content {
+  top: 0;
+}
+.travel__slide:focus-within .travel__slide--rat {
+  opacity: 0;
+}
+.travel__slide:focus-within .travel__slide--content {
   top: 0;
 }
 .travel__slide:focus-within {

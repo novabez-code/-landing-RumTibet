@@ -2,7 +2,7 @@
   font-size: var(--font-size);
   font-weight: 600;
   line-height: 20px;
-  letter-spacing: 1.2%;
+  letter-spacing: 0.012em;
 
   color: var(--color-text-white-small);
   background-color: var(--color-bg-green);

@@ -7,6 +7,13 @@ import {
 } from "./card.js";
 
 document.addEventListener("DOMContentLoaded", function () {
+  renderCards(".travel__slider .splide__list", HTMLTravelCard, travelCardsData);
+  renderCards(
+    ".journey__slider .splide__list",
+    HTMLJourneyCard,
+    journeyCardsData,
+  );
+
   var splide1 = new Splide(".travel__slider", {
     type: "loop",
     perPage: 1,
@@ -18,22 +25,10 @@ document.addEventListener("DOMContentLoaded", function () {
     slideFocus: false,
     mediaQuery: "min",
     breakpoints: {
-      768: {
-        perPage: 2,
-      },
-      1100: {
-        destroy: true,
-      },
+      768: { perPage: 2 },
+      1100: { destroy: true },
     },
   });
-
-  renderCards(".travel__slider .splide__list", HTMLTravelCard, travelCardsData);
-  renderCards(
-    ".journey__slider .splide__list",
-    HTMLJourneyCard,
-    journeyCardsData,
-  );
-
   splide1.mount();
 
   var splide2 = new Splide(".journey__slider", {
@@ -44,14 +39,12 @@ document.addEventListener("DOMContentLoaded", function () {
     arrows: false,
     padding: "10%",
     gap: "20px",
+    slideFocus: false,
     mediaQuery: "min",
     breakpoints: {
-      768: {
-        destroy: true,
-      },
+      768: { destroy: true },
     },
   });
-
   splide2.mount();
 
   var splide3 = new Splide(".pinterest__slider", {
@@ -62,19 +55,55 @@ document.addEventListener("DOMContentLoaded", function () {
     arrows: false,
     padding: "10%",
     gap: "20px",
+    slideFocus: false,
     mediaQuery: "min",
     breakpoints: {
-      768: {
-        destroy: true,
-      },
+      768: { destroy: true },
     },
   });
-
   splide3.mount();
 
-  const gallery2 = document.getElementById("video-gallery-2");
+  // Клоны Splide не должны быть фокусируемы
+  document.querySelectorAll(".splide__slide--clone").forEach((clone) => {
+    clone.setAttribute("inert", "");
+  });
 
-  lightGallery(gallery2, {
+  function fixAriaHiddenFocus(splideEl) {
+    // Все слайды с aria-hidden="true" делаем inert — это и убирает фокус и закрывает варнинг
+    splideEl
+      .querySelectorAll('.splide__slide[aria-hidden="true"]')
+      .forEach((slide) => {
+        slide.setAttribute("inert", "");
+      });
+    // Активные слайды — убираем inert
+    splideEl
+      .querySelectorAll(
+        '.splide__slide[aria-hidden="false"], .splide__slide.is-active',
+      )
+      .forEach((slide) => {
+        slide.removeAttribute("inert");
+      });
+  }
+
+  [splide1, splide2, splide3].forEach((splide) => {
+    const el = splide.root;
+
+    fixAriaHiddenFocus(el);
+
+    splide.on("moved", () => {
+      setTimeout(() => fixAriaHiddenFocus(el), 50);
+    });
+
+    splide.on("destroy", () => {
+      el.querySelectorAll(".splide__slide").forEach((slide) => {
+        slide.removeAttribute("inert");
+      });
+    });
+  });
+
+  // ─── lightGallery ───────────────────────────────────────
+
+  lightGallery(document.getElementById("video-gallery-2"), {
     plugins: [lgVideo],
     speed: 500,
     zoom: false,
@@ -82,9 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
     licenseKey: "0000-0000-000-0000",
   });
 
-  const gallery = document.getElementById("video-gallery-1");
-
-  lightGallery(gallery, {
+  lightGallery(document.getElementById("video-gallery-1"), {
     plugins: [lgVideo],
     speed: 500,
     zoom: false,
@@ -101,116 +128,61 @@ document.addEventListener("DOMContentLoaded", function () {
     licenseKey: "0000-0000-000-0000",
   });
 
-  fixTravelFocusIssue();
-  if (splide1) {
-    splide1.on("move", () => {
-      document
-        .querySelectorAll(".travel__slider .btn")
-        .forEach((btn) => btn.blur());
-    });
-
-    splide1.on("moved", () => {
-      setTimeout(fixTravelFocusIssue, 30);
-    });
-
-    splide1.on("refresh", fixTravelFocusIssue);
-  }
+  // ─── Формы ──────────────────────────────────────────────
 
   const introForm = document.getElementById("intro-search-form");
-  const newsletterForm = document.getElementById("newsletter-form");
-
   if (introForm) {
     introForm.addEventListener("submit", function (e) {
       e.preventDefault();
-      const form = new FormData(introForm);
-      const formInfo = Object.fromEntries(form.entries());
-
-      if (formInfo["travel-choice"] === "")
-        formInfo["travel-choice"] = "Неважно";
-      if (formInfo["travel-data"] === "") formInfo["travel-data"] = "Неважно";
-      if (formInfo["travel-participants"] === "")
+      const formInfo = Object.fromEntries(new FormData(introForm).entries());
+      if (!formInfo["travel-choice"]) formInfo["travel-choice"] = "Неважно";
+      if (!formInfo["travel-data"]) formInfo["travel-data"] = "Неважно";
+      if (!formInfo["travel-participants"])
         formInfo["travel-participants"] = "Неважно";
-
-      if (formInfo)
-        console.log(
-          `Поиск программ в стране: ${formInfo["travel-choice"]} в период ${formInfo["travel-data"]} на ${formInfo["travel-participants"]} учасников.`,
-        );
+      console.log(
+        `Поиск: ${formInfo["travel-choice"]} / ${formInfo["travel-data"]} / ${formInfo["travel-participants"]} участников`,
+      );
     });
   }
 
+  const newsletterForm = document.getElementById("newsletter-form");
   if (newsletterForm) {
     newsletterForm.addEventListener("submit", function (e) {
       e.preventDefault();
       console.log("Подписка на новости отправлена");
     });
   }
-
-  function fixTravelFocusIssue() {
-    const slides = document.querySelectorAll(".travel__slider .splide__slide");
-    slides.forEach((slide) => {
-      const buttons = slide.querySelectorAll(".btn, a");
-
-      if (slide.classList.contains("is-active")) {
-        slide.removeAttribute("inert");
-        buttons.forEach((btn) => {
-          btn.removeAttribute("tabindex");
-          btn.removeAttribute("inert");
-        });
-      } else {
-        slide.setAttribute("inert", "");
-        buttons.forEach((btn) => {
-          btn.setAttribute("tabindex", "-1");
-          btn.setAttribute("inert", "");
-        });
-      }
-    });
-  }
 });
+
+// ─── Хедер ────────────────────────────────────────────────
 
 const header = document.querySelector(".header");
 const headerBurger = document.querySelector(".header__burger");
-const navLinks = document.querySelectorAll(".header__item--link");
 
-headerBurger.addEventListener("click", () => {
-  header.classList.toggle("active");
-  document.body.classList.toggle("lock");
+if (headerBurger) {
+  headerBurger.addEventListener("click", () => {
+    header.classList.toggle("active");
+    document.body.classList.toggle("lock");
+    headerBurger.setAttribute(
+      "aria-expanded",
+      header.classList.contains("active"),
+    );
+  });
+}
 
-  const isActive = header.classList.contains("active");
-  headerBurger.setAttribute("aria-expanded", isActive);
-});
-
-navLinks.forEach((link) => {
+document.querySelectorAll(".header__item--link").forEach((link) => {
   link.addEventListener("click", () => {
     header.classList.remove("active");
     document.body.classList.remove("lock");
   });
 });
 
-const videoBlock = document.querySelectorAll(".explore__video--block");
+// ─── Видео блок ───────────────────────────────────────────
 
+const videoBlock = document.querySelectorAll(".explore__video--block");
 videoBlock.forEach((block) => {
   block.addEventListener("click", () => {
-    videoBlock.forEach((block) => {
-      block.classList.remove("active");
-    });
+    videoBlock.forEach((b) => b.classList.remove("active"));
     block.classList.toggle("active");
   });
 });
-
-function fixSplideAriaHidden() {
-  const splides = document.querySelectorAll(".splide");
-
-  splides.forEach((splideEl) => {
-    const slides = splideEl.querySelectorAll(".splide__slide");
-
-    slides.forEach((slide) => {
-      const buttons = slide.querySelectorAll("button, a");
-
-      if (slide.classList.contains("is-active")) {
-        buttons.forEach((btn) => btn.removeAttribute("tabindex"));
-      } else {
-        buttons.forEach((btn) => btn.setAttribute("tabindex", "-1"));
-      }
-    });
-  });
-}
